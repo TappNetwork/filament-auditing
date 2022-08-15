@@ -35,27 +35,15 @@ This is the content of the published config file:
 
 return [
 
-    'exclude_properties' => [
-        
-    ],
+    'audits_sort' => [
+        'column' => 'created_at',
+        'direction' => 'desc',
+    ]
 
 ];
 ```
 
-The `exclude_properties` can be used to hide properties on the audits table. 
-E.g.: To hide the `remember_token` on `old_values` and `new_values` in the audits table:
-
-```php
-<?php
-
-return [
-
-    'exclude_properties' => [
-        'remember_token',
-    ],
-
-];
-```
+The `audits_sort` can be used to change the default sort on the audits table. 
 
 ## Usage
 
