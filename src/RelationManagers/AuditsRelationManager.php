@@ -8,6 +8,7 @@ use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use OwenIt\Auditing\Models\Audit;
@@ -21,6 +22,12 @@ class AuditsRelationManager extends RelationManager
     public static function canViewForRecord(Model $ownerRecord): bool
     {
         return auth()->user()->can('audit', $ownerRecord);
+    }
+
+    protected function getTableQuery(): Builder
+    {
+        return Audit::query()
+            ->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction'));
     }
 
     public static function table(Table $table): Table
