@@ -26,7 +26,7 @@ class AuditsRelationManager extends RelationManager
 
     protected function getTableQuery(): Builder
     {
-        return Audit::query()
+        return parent::getTableQuery()
             ->with('user')
             ->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction'));
     }
