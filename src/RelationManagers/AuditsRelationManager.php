@@ -34,7 +34,7 @@ class AuditsRelationManager extends RelationManager
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(Arr::flatten([
                 Tables\Columns\TextColumn::make('user.name'),
                 Tables\Columns\TextColumn::make('event'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -43,7 +43,8 @@ class AuditsRelationManager extends RelationManager
                     ->view('filament-auditing::tables.columns.key-value'),
                 Tables\Columns\ViewColumn::make('new_values')
                     ->view('filament-auditing::tables.columns.key-value'),
-            ])
+                config('filament-auditing.audits_extend')
+            ]))
             ->filters([
                 //
             ])
