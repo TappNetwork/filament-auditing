@@ -38,6 +38,10 @@ return [
     'audits_sort' => [
         'column' => 'created_at',
         'direction' => 'desc',
+    ],
+    
+    'audits_extend' => [
+        // eg. \Filament\Tables\Columns\TextColumn::make('url'),
     ]
 
 ];
@@ -64,6 +68,25 @@ public static function getRelations(): array
 That's it, you're all set!
 
 If you access your resource, and edit some data, you will now see the audits table on edit and view pages.
+
+### Extending Columns
+In case you need to add a column to the AuditsRelationManager that does
+not already exist in the table, you can add it in the config, and it will be
+prepended to the table builder.
+
+```php
+<?php
+
+return [
+
+    'audits_extend' => [
+       \Filament\Tables\Columns\TextColumn::make('url'),
+       \Filament\Tables\Columns\TextColumn::make('ip_address'),
+    ]
+
+];
+```
+
 
 ### Permissions
 
