@@ -17,7 +17,14 @@ return [
      *
      */
     'audits_extend' => [
-        // eg. \Filament\Tables\Columns\TextColumn::make('url'),
+        // 'url' => [
+        //     'class' => \Filament\Tables\Columns\TextColumn::class,
+        //     'methods' => [
+        //         'sortable',
+        //         'searchable' => true,
+        //         'default' => 'N/A'
+        //     ]
+        // ],
     ]
 
 ];
