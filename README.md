@@ -76,7 +76,7 @@ If you access your resource, and edit some data, you will now see the audits tab
 
 In case you need to add a column to the AuditsRelationManager that does
 not already exist in the table, you can add it in the config using the format denoted in the example below, and it will be
-prepended to the table builder. The name of the column to be added is the key of an associative array that contains other information about the class, as shown in the example below. The class instance of the column must be added, but the methods can be left out if not required, or added wherever necessary.
+prepended to the table builder. The name of the column to be added is the key of an associative array that contains other information about the class, as shown in the example below. The class instance of the column must be added, but the methods can be left out if not required, or added wherever necessary. 
 
 ```php
 <?php
@@ -96,11 +96,14 @@ return [
 ];
 ```
 
+
 After adding this information in the config, please run this command for changes to take place.
 
 ```bash
 php artisan optimize
 ```
+
+As things stand, methods with two required parameters are not supported.
 
 ### Permissions
 
