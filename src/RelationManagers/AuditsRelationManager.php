@@ -34,7 +34,7 @@ class AuditsRelationManager extends RelationManager
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(Arr::flatten([
                 Tables\Columns\TextColumn::make('user.name'),
                 Tables\Columns\TextColumn::make('event'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -43,7 +43,8 @@ class AuditsRelationManager extends RelationManager
                     ->view('filament-auditing::tables.columns.key-value'),
                 Tables\Columns\ViewColumn::make('new_values')
                     ->view('filament-auditing::tables.columns.key-value'),
-            ])
+                self::extraColumns()
+            ]))
             ->filters([
                 //
             ])
@@ -60,6 +61,33 @@ class AuditsRelationManager extends RelationManager
             ->bulkActions([
                 //
             ]);
+    }
+
+    protected static function extraColumns()
+    {
+        return Arr::map(config('filament-auditing.audits_extend'), function ($buildParameters, $columnName) {
+            return collect($buildParameters)->pipeThrough([
+                function ($collection) use ($columnName) {
+                    $columnClass = (string)$collection->get('class');
+
+                    if (!is_null($collection->get('methods'))) {
+                        $columnClass = $columnClass::make($columnName);
+
+                        collect($collection->get('methods'))->transform(function ($value, $key) use ($columnClass) {
+                            if (is_numeric($key)) {
+                                return $columnClass->$value();
+                            }
+
+                            return $columnClass->$key($value);
+                        });
+
+                        return $columnClass;
+                    }
+
+                    return $columnClass::make($columnName);
+                },
+            ]);
+        });
     }
 
     protected static function restoreAuditSelected($audit)
