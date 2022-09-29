@@ -43,7 +43,14 @@ return [
     ],
     
     'audits_extend' => [
-        // eg. \Filament\Tables\Columns\TextColumn::make('url'),
+        // 'url' => [
+        //     'class' => \Filament\Tables\Columns\TextColumn::class,
+        //     'methods' => [
+        //         'sortable',
+        //         'searchable' => true,
+        //         'default' => 'N/A'
+        //     ]
+        // ],
     ]
 
 ];
@@ -107,7 +114,7 @@ As things stand, methods with two required parameters are not supported.
 
 ### Permissions
 
-Two permissions are registered by default allowing access to:
+Two permissions are registered by default, allowing access to:
 
 - `audit`: view audits
 - `restoreAudit`: restore audits
