@@ -23,6 +23,10 @@ class AuditsRelationManager extends RelationManager
     {
         return auth()->user()->can('audit', $ownerRecord);
     }
+    public static function getTitle(): string
+    {
+        return trans('filament-auditing::filament-auditing.table.heading');
+    }
 
     protected function getTableQuery(): Builder
     {
@@ -35,14 +39,19 @@ class AuditsRelationManager extends RelationManager
     {
         return $table
             ->columns(Arr::flatten([
-                Tables\Columns\TextColumn::make('user.name'),
-                Tables\Columns\TextColumn::make('event'),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label(trans('filament-auditing::filament-auditing.column.user_name')),
+                Tables\Columns\TextColumn::make('event')
+                    ->label(trans('filament-auditing::filament-auditing.column.event')),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Created'),
+                    ->since()
+                    ->label(trans('filament-auditing::filament-auditing.column.created_at')),
                 Tables\Columns\ViewColumn::make('old_values')
-                    ->view('filament-auditing::tables.columns.key-value'),
+                    ->view('filament-auditing::tables.columns.key-value')
+                    ->label(trans('filament-auditing::filament-auditing.column.old_values')),
                 Tables\Columns\ViewColumn::make('new_values')
-                    ->view('filament-auditing::tables.columns.key-value'),
+                    ->view('filament-auditing::tables.columns.key-value')
+                    ->label(trans('filament-auditing::filament-auditing.column.new_values')),
                 self::extraColumns()
             ]))
             ->filters([
@@ -53,6 +62,7 @@ class AuditsRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\Action::make('restore')
+                    ->label(trans('filament-auditing::filament-auditing.action.restore'))
                     ->action(fn (Audit $record) => static::restoreAuditSelected($record))
                     ->icon('heroicon-o-refresh')
                     ->requiresConfirmation()
@@ -94,7 +104,7 @@ class AuditsRelationManager extends RelationManager
     {
         $record = $audit->auditable_type::find($audit->auditable_id);
 
-        if (! $record) {
+        if (!$record) {
             self::unchangedAuditNotification();
 
             return;

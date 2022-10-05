@@ -21,6 +21,7 @@ class FilamentAuditingServiceProvider extends PluginServiceProvider
 
         $package->name('filament-auditing')
             ->hasConfigFile('filament-auditing')
+            ->hasTranslations('filament-auditing')
             ->hasViews('filament-auditing');
     }
 
