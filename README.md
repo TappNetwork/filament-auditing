@@ -23,6 +23,11 @@ You can publish the view file with:
 ```bash
 php artisan vendor:publish --tag="filament-auditing-views"
 ```
+You can publish the translation files with:
+
+```bash
+php artisan vendor:publish --tag="filament-auditing-translations"
+```
 
 You can publish the config file with:
 

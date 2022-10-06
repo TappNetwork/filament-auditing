@@ -137,7 +137,7 @@ class AuditsRelationManager extends RelationManager
     protected static function restoredAuditNotification()
     {
         Notification::make()
-            ->title(__('Audit restored'))
+            ->title(trans('filament-auditing::filament-auditing.notification.restored'))
             ->success()
             ->send();
     }
@@ -145,7 +145,7 @@ class AuditsRelationManager extends RelationManager
     protected static function unchangedAuditNotification()
     {
         Notification::make()
-            ->title(__('Nothing to change'))
+            ->title(trans('filament-auditing::filament-auditing.notification.unchanged'))
             ->warning()
             ->send();
     }

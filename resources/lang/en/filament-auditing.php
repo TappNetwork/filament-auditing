@@ -30,6 +30,15 @@ return [
 
     'action.restore' => 'Restore',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Notifications
+    |--------------------------------------------------------------------------
+    */
+
+    'notification.restored' => 'Audit restored',
+    'notification.unchanged' => 'Nothing to change',
+
 
 
 
