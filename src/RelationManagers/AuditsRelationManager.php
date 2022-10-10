@@ -10,6 +10,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
 use OwenIt\Auditing\Models\Audit;
 
@@ -23,6 +24,7 @@ class AuditsRelationManager extends RelationManager
     {
         return auth()->user()->can('audit', $ownerRecord);
     }
+
     public static function getTitle(): string
     {
         return trans('filament-auditing::filament-auditing.table.heading');
@@ -102,7 +104,9 @@ class AuditsRelationManager extends RelationManager
 
     protected static function restoreAuditSelected($audit)
     {
-        $record = $audit->auditable_type::find($audit->auditable_id);
+        $morphClass = Relation::getMorphedModel($audit->auditable_type) ?? $audit->auditable_type;
+
+        $record = $morphClass::find($audit->auditable_id);
 
         if (!$record) {
             self::unchangedAuditNotification();
