@@ -125,3 +125,20 @@ Two permissions are registered by default, allowing access to:
 - `restoreAudit`: restore audits
 
 You can override these permissions by adding a policy with `audit` and `restoreAudit`.
+
+### Event emitted
+
+The `auditRestored` event is emitted when an audit is restored, so you could register a listener using the $listeners property to execute some extra code after the audit is restored.
+
+E.g.: on Edit page of your resource:
+
+```php
+protected $listeners = [
+    'auditRestored',
+];
+
+public function auditRestored()
+{
+    // your code
+}
+```
