@@ -1,0 +1,16 @@
+/node_modules
+/vendor
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
+/build
+/coverage
+.DS_Store
+composer.phar
+phpunit.xml
+phpstan.neon
