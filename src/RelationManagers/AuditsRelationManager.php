@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
-use OwenIt\Auditing\Models\Audit;
+use OwenIt\Auditing\Contracts\Audit;
 
 class AuditsRelationManager extends RelationManager
 {
