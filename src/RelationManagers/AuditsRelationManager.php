@@ -128,6 +128,15 @@ class AuditsRelationManager extends RelationManager
         Arr::pull($restore, 'id');
 
         if (is_array($restore)) {
+
+            foreach ($restore as $key => $item) {
+                $decode = json_decode($item);
+
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    $restore[$key] = $decode;
+                }
+            }
+
             $record->fill($restore);
             $record->save();
 
