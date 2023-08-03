@@ -15,8 +15,11 @@ restore audits.
 You can install the plugin via composer:
 
 ```bash
-composer require tapp/filament-auditing
+composer require tapp/filament-auditing:"^3.0"
 ```
+
+> **Note** 
+> For **Filament 2.x** check the **[2.x](https://github.com//TappNetwork/filament-auditing/tree/2.x)** branch
 
 You can publish the view file with:
 

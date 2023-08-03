@@ -2,23 +2,16 @@
 
 namespace Tapp\FilamentAuditing;
 
-use Filament\PluginServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Spatie\LaravelPackageTools\Package;
-use Tapp\FilamentAuditing\RelationManagers\AuditsRelationManager;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentAuditingServiceProvider extends PluginServiceProvider
+class FilamentAuditingServiceProvider extends PackageServiceProvider
 {
     public static string $name = 'filament-auditing';
 
-    protected array $relationManagers = [
-        AuditsRelationManager::class,
-    ];
-
     public function configurePackage(Package $package): void
     {
-        parent::configurePackage($package);
-
         $package->name('filament-auditing')
             ->hasConfigFile('filament-auditing')
             ->hasTranslations('filament-auditing')

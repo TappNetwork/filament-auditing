@@ -6,7 +6,7 @@ use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -20,26 +20,20 @@ class AuditsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'id';
 
-    public static function canViewForRecord(Model $ownerRecord): bool
+    public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
     {
         return auth()->user()->can('audit', $ownerRecord);
     }
 
-    public static function getTitle(): string
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
         return trans('filament-auditing::filament-auditing.table.heading');
     }
 
-    protected function getTableQuery(): Builder
-    {
-        return parent::getTableQuery()
-            ->with('user')
-            ->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction'));
-    }
-
-    public static function table(Table $table): Table
+    public function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(fn (Builder $query) => $query->with('user')->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
             ->columns(Arr::flatten([
                 Tables\Columns\TextColumn::make('user.name')
                     ->label(trans('filament-auditing::filament-auditing.column.user_name')),
@@ -66,11 +60,11 @@ class AuditsRelationManager extends RelationManager
                 Tables\Actions\Action::make('restore')
                     ->label(trans('filament-auditing::filament-auditing.action.restore'))
                     ->action(fn (Audit $record) => static::restoreAuditSelected($record))
-                    ->icon('heroicon-o-refresh')
+                    ->icon('heroicon-o-arrow-path')
                     ->requiresConfirmation()
                     ->visible(fn (Audit $record, RelationManager $livewire): bool => auth()->user()->can('restoreAudit', $livewire->ownerRecord) && $record->event === 'updated')
                     ->after(function ($livewire) {
-                        $livewire->emit('auditRestored');
+                        $livewire->dispatch('auditRestored');
                     }),
             ])
             ->bulkActions([
