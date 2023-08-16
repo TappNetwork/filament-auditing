@@ -13,8 +13,6 @@ return [
      *  In case you need to add a column to the AuditsRelationManager that does
      *  not already exist in the table, you can add it here, and it will be
      *  prepended to the table builder.
-     *
-     *
      */
     'audits_extend' => [
         // 'url' => [
@@ -25,6 +23,6 @@ return [
         //         'default' => 'N/A'
         //     ]
         // ],
-    ]
+    ],
 
 ];

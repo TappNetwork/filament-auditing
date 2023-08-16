@@ -22,7 +22,7 @@ return [
     'column.old_values' => 'Old Values',
     'column.new_values' => 'New Values',
 
-     /*
+    /*
     |--------------------------------------------------------------------------
     | Table Actions
     |--------------------------------------------------------------------------
@@ -38,8 +38,5 @@ return [
 
     'notification.restored' => 'Audit restored',
     'notification.unchanged' => 'Nothing to change',
-
-
-
 
 ];

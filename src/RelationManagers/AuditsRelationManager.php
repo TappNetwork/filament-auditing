@@ -2,12 +2,10 @@
 
 namespace Tapp\FilamentAuditing\RelationManagers;
 
-use Filament\Forms;
 use Filament\Notifications\Notification;
-use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -48,7 +46,7 @@ class AuditsRelationManager extends RelationManager
                 Tables\Columns\ViewColumn::make('new_values')
                     ->view('filament-auditing::tables.columns.key-value')
                     ->label(trans('filament-auditing::filament-auditing.column.new_values')),
-                self::extraColumns()
+                self::extraColumns(),
             ]))
             ->filters([
                 //
@@ -77,9 +75,9 @@ class AuditsRelationManager extends RelationManager
         return Arr::map(config('filament-auditing.audits_extend'), function ($buildParameters, $columnName) {
             return collect($buildParameters)->pipeThrough([
                 function ($collection) use ($columnName) {
-                    $columnClass = (string)$collection->get('class');
+                    $columnClass = (string) $collection->get('class');
 
-                    if (!is_null($collection->get('methods'))) {
+                    if (! is_null($collection->get('methods'))) {
                         $columnClass = $columnClass::make($columnName);
 
                         collect($collection->get('methods'))->transform(function ($value, $key) use ($columnClass) {
@@ -105,7 +103,7 @@ class AuditsRelationManager extends RelationManager
 
         $record = $morphClass::find($audit->auditable_id);
 
-        if (!$record) {
+        if (! $record) {
             self::unchangedAuditNotification();
 
             return;
@@ -135,8 +133,6 @@ class AuditsRelationManager extends RelationManager
             $record->save();
 
             self::restoredAuditNotification();
-
-            $refresh;
 
             return;
         }
