@@ -145,3 +145,16 @@ public function auditRestored()
     // your code
 }
 ```
+
+### Event listener
+
+The audits relation manager listen to the `updateAuditsRelationManager` event to refresh the audits table.
+
+So you can dispatch this event in the Edit page of your resource (e.g.: in a edit page of a `PostResource` -> `app/Filament/Resources/PostResource/Pages/EditPost.php`) when the form is updated:
+
+```php
+public function updated()
+{
+    $this->dispatch('updateAuditsRelationManager');
+}
+```
