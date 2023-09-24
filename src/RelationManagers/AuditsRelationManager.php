@@ -18,6 +18,8 @@ class AuditsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'id';
 
+    protected $listeners = ['updateAuditsRelationManager' => '$refresh'];
+
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
     {
         return auth()->user()->can('audit', $ownerRecord);
