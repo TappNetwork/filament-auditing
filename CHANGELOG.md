@@ -2,6 +2,14 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v3.0.3 - 2024-01-10
+
+### What's Changed
+
+* Added fr_FR translation file for 3.x by @loanbesson in https://github.com/TappNetwork/filament-auditing/pull/19
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v3.0.2...v3.0.3
+
 ## v3.0.2 - 2023-09-24
 
 ### What's Changed
