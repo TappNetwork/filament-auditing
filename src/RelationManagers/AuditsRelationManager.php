@@ -21,6 +21,11 @@ class AuditsRelationManager extends RelationManager
 
     protected $listeners = ['updateAuditsRelationManager' => '$refresh'];
 
+    public static function isLazy(): bool
+    {
+        return config('filament-auditing.is_lazy');
+    }
+
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
     {
         return Filament::auth()->user()->can('audit', $ownerRecord);

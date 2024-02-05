@@ -49,6 +49,8 @@ return [
         'column' => 'created_at',
         'direction' => 'desc',
     ],
+
+    'is_lazy' => true,
     
     'audits_extend' => [
         // 'url' => [
@@ -153,8 +155,13 @@ The audits relation manager listen to the `updateAuditsRelationManager` event to
 So you can dispatch this event in the Edit page of your resource (e.g.: in a edit page of a `PostResource` -> `app/Filament/Resources/PostResource/Pages/EditPost.php`) when the form is updated:
 
 ```php
-public function updated()
+protected function afterSave(): void
 {
     $this->dispatch('updateAuditsRelationManager');
 }
 ```
+
+> [!WARNING]
+> When dispaching this event, set the [is_lazy](https://filamentphp.com/docs/3.x/panels/resources/relation-managers#disabling-lazy-loading) configuration to `false`, on `filament-auditing.php` 
+> config file, to avoid this exception: "Typed property Filament\Resources\RelationManagers\RelationManager::$table
+> must not be accessed before initialization"
