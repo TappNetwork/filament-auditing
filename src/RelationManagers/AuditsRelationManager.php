@@ -10,7 +10,6 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-
 use Illuminate\Support\Arr;
 use OwenIt\Auditing\Contracts\Audit;
 
