@@ -2,6 +2,7 @@
 
 namespace Tapp\FilamentAuditing\RelationManagers;
 
+use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -9,6 +10,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+
 use Illuminate\Support\Arr;
 use OwenIt\Auditing\Contracts\Audit;
 
@@ -22,7 +24,7 @@ class AuditsRelationManager extends RelationManager
 
     public static function canViewForRecord(Model $ownerRecord, string $pageClass): bool
     {
-        return auth()->user()->can('audit', $ownerRecord);
+        return Filament::auth()->user()->can('audit', $ownerRecord);
     }
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
@@ -62,7 +64,7 @@ class AuditsRelationManager extends RelationManager
                     ->action(fn (Audit $record) => static::restoreAuditSelected($record))
                     ->icon('heroicon-o-arrow-path')
                     ->requiresConfirmation()
-                    ->visible(fn (Audit $record, RelationManager $livewire): bool => auth()->user()->can('restoreAudit', $livewire->ownerRecord) && $record->event === 'updated')
+                    ->visible(fn (Audit $record, RelationManager $livewire): bool => Filament::auth()->user()->can('restoreAudit', $livewire->ownerRecord) && $record->event === 'updated')
                     ->after(function ($livewire) {
                         $livewire->dispatch('auditRestored');
                     }),
