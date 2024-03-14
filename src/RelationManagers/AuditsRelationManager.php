@@ -3,14 +3,18 @@
 namespace Tapp\FilamentAuditing\RelationManagers;
 
 use Filament\Facades\Filament;
+use Filament\Forms\Components\Component;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Tables\Columns\Column;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
+use Illuminate\View\View;
+use Livewire\Component as Livewire;
 use OwenIt\Auditing\Contracts\Audit;
 
 class AuditsRelationManager extends RelationManager
@@ -40,6 +44,7 @@ class AuditsRelationManager extends RelationManager
     {
         return $table
             ->modifyQueryUsing(fn (Builder $query) => $query->with('user')->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
+            ->content(fn (): ?View => config('filament-auditing.custom_audits_view') ? view('filament-auditing::tables.custom-audit-content', Arr::add(self::customViewParameters(), 'owner', $this->getOwnerRecord())) : null)
             ->columns(Arr::flatten([
                 Tables\Columns\TextColumn::make('user.name')
                     ->label(trans('filament-auditing::filament-auditing.column.user_name')),
@@ -48,12 +53,14 @@ class AuditsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('created_at')
                     ->since()
                     ->label(trans('filament-auditing::filament-auditing.column.created_at')),
-                Tables\Columns\ViewColumn::make('old_values')
-                    ->view('filament-auditing::tables.columns.key-value')
-                    ->label(trans('filament-auditing::filament-auditing.column.old_values')),
-                Tables\Columns\ViewColumn::make('new_values')
-                    ->view('filament-auditing::tables.columns.key-value')
-                    ->label(trans('filament-auditing::filament-auditing.column.new_values')),
+                Tables\Columns\TextColumn::make('old_values')
+                    ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
+                    ->label(trans('filament-auditing::filament-auditing.column.old_values'))
+                    ->view(config('filament-auditing.custom_old_and_new_values_column_view') ? 'filament-auditing::tables.columns.key-value' : null),
+                Tables\Columns\TextColumn::make('new_values')
+                    ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
+                    ->label(trans('filament-auditing::filament-auditing.column.new_values'))
+                    ->view(config('filament-auditing.custom_old_and_new_values_column_view') ? 'filament-auditing::tables.columns.key-value' : null),
                 self::extraColumns(),
             ]))
             ->filters([
@@ -76,6 +83,11 @@ class AuditsRelationManager extends RelationManager
             ->bulkActions([
                 //
             ]);
+    }
+
+    protected static function customViewParameters(): array
+    {
+        return config('filament-auditing.custom_view_parameters');
     }
 
     protected static function extraColumns()
