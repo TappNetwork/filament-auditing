@@ -3,7 +3,6 @@
 namespace Tapp\FilamentAuditing\RelationManagers;
 
 use Filament\Facades\Filament;
-use Filament\Forms\Components\Component;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -14,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
-use Livewire\Component as Livewire;
 use OwenIt\Auditing\Contracts\Audit;
 
 class AuditsRelationManager extends RelationManager
