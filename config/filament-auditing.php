@@ -27,4 +27,12 @@ return [
         // ],
     ],
 
+    'custom_audits_view' => false,
+
+    'custom_view_parameters' => [
+    ],
+
+    'mapping' => [
+    ],
+
 ];
