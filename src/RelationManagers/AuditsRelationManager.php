@@ -44,23 +44,23 @@ class AuditsRelationManager extends RelationManager
             method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation')
             ?
             Tables\Columns\TextColumn::make('old_values')
-                    ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
-                    ->label(trans('filament-auditing::filament-auditing.column.old_values'))
+                ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
+                ->label(trans('filament-auditing::filament-auditing.column.old_values'))
             :
             Tables\Columns\TextColumn::make('old_values')
-                    ->formatStateUsing(fn (Column $column, $record, $state): View => view('filament-auditing::tables.columns.key-value', ['state' => $this->mapRelatedColumns($column->getState(), $record)]))
-                    ->label(trans('filament-auditing::filament-auditing.column.old_values'));
+                ->formatStateUsing(fn (Column $column, $record, $state): View => view('filament-auditing::tables.columns.key-value', ['state' => $this->mapRelatedColumns($column->getState(), $record)]))
+                ->label(trans('filament-auditing::filament-auditing.column.old_values'));
 
         $newValuesColumn =
                     method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation')
                     ?
                     Tables\Columns\TextColumn::make('new_values')
-                            ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
-                            ->label(trans('filament-auditing::filament-auditing.column.new_values'))
+                        ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
+                        ->label(trans('filament-auditing::filament-auditing.column.new_values'))
                     :
                     Tables\Columns\TextColumn::make('new_values')
-                            ->formatStateUsing(fn (Column $column, $record, $state): View => view('filament-auditing::tables.columns.key-value', ['state' => $this->mapRelatedColumns($column->getState(), $record)]))
-                            ->label(trans('filament-auditing::filament-auditing.column.new_values'));
+                        ->formatStateUsing(fn (Column $column, $record, $state): View => view('filament-auditing::tables.columns.key-value', ['state' => $this->mapRelatedColumns($column->getState(), $record)]))
+                        ->label(trans('filament-auditing::filament-auditing.column.new_values'));
 
         return $table
             ->modifyQueryUsing(fn (Builder $query) => $query->with('user')->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
