@@ -3,7 +3,6 @@
 namespace Tapp\FilamentAuditing\RelationManagers;
 
 use Filament\Facades\Filament;
-use Filament\Forms\Components\Component;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -14,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
-use Livewire\Component as Livewire;
 use OwenIt\Auditing\Contracts\Audit;
 
 class AuditsRelationManager extends RelationManager
@@ -42,6 +40,28 @@ class AuditsRelationManager extends RelationManager
 
     public function table(Table $table): Table
     {
+        $oldValuesColumn =
+            method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation')
+            ?
+            Tables\Columns\TextColumn::make('old_values')
+                    ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
+                    ->label(trans('filament-auditing::filament-auditing.column.old_values'))
+            :
+            Tables\Columns\TextColumn::make('old_values')
+                    ->formatStateUsing(fn (Column $column, $record, $state): View => view('filament-auditing::tables.columns.key-value', ['state' => $this->mapRelatedColumns($column->getState(), $record)]))
+                    ->label(trans('filament-auditing::filament-auditing.column.old_values'));
+
+        $newValuesColumn =
+                    method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation')
+                    ?
+                    Tables\Columns\TextColumn::make('new_values')
+                            ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
+                            ->label(trans('filament-auditing::filament-auditing.column.new_values'))
+                    :
+                    Tables\Columns\TextColumn::make('new_values')
+                            ->formatStateUsing(fn (Column $column, $record, $state): View => view('filament-auditing::tables.columns.key-value', ['state' => $this->mapRelatedColumns($column->getState(), $record)]))
+                            ->label(trans('filament-auditing::filament-auditing.column.new_values'));
+
         return $table
             ->modifyQueryUsing(fn (Builder $query) => $query->with('user')->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
             ->content(fn (): ?View => config('filament-auditing.custom_audits_view') ? view('filament-auditing::tables.custom-audit-content', Arr::add(self::customViewParameters(), 'owner', $this->getOwnerRecord())) : null)
@@ -53,14 +73,8 @@ class AuditsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('created_at')
                     ->since()
                     ->label(trans('filament-auditing::filament-auditing.column.created_at')),
-                Tables\Columns\TextColumn::make('old_values')
-                    ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
-                    ->label(trans('filament-auditing::filament-auditing.column.old_values'))
-                    ->view(config('filament-auditing.custom_old_and_new_values_column_view') ? 'filament-auditing::tables.columns.key-value' : null),
-                Tables\Columns\TextColumn::make('new_values')
-                    ->formatStateUsing(fn (Column $column, $record, $state) => method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation') ? $this->getOwnerRecord()->formatAuditFieldsForPresentation($column->getName(), $record) : $state)
-                    ->label(trans('filament-auditing::filament-auditing.column.new_values'))
-                    ->view(config('filament-auditing.custom_old_and_new_values_column_view') ? 'filament-auditing::tables.columns.key-value' : null),
+                $oldValuesColumn,
+                $newValuesColumn,
                 self::extraColumns(),
             ]))
             ->filters([
@@ -88,6 +102,22 @@ class AuditsRelationManager extends RelationManager
     protected static function customViewParameters(): array
     {
         return config('filament-auditing.custom_view_parameters');
+    }
+
+    protected function mapRelatedColumns($state, $record)
+    {
+        $relationshipsToUpdate = Arr::wrap(config('filament-auditing.mapping'));
+
+        if (count($relationshipsToUpdate) !== 0) {
+            foreach ($relationshipsToUpdate as $key => $relationship) {
+                if (array_key_exists($key, $state)) {
+                    $state[$relationship['label']] = $relationship['model']::find($state[$key])?->{$relationship['field']};
+                    unset($state[$key]);
+                }
+            }
+        }
+
+        return $state;
     }
 
     protected static function extraColumns()

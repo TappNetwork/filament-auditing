@@ -28,8 +28,11 @@ return [
     ],
 
     'custom_audits_view' => false,
-    'custom_old_and_new_values_column_view' => true,
 
     'custom_view_parameters' => [
-    ]
+    ],
+
+    'mapping' => [
+    ],
+
 ];

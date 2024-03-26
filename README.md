@@ -64,10 +64,12 @@ return [
     ]
 
     'custom_audits_view' => false,
-    'custom_old_and_new_values_column_view' => true,
 
     'custom_view_parameters' => [
-    ]
+    ],
+
+    'mapping' => [
+    ],
 ];
 ```
 
@@ -128,22 +130,33 @@ As things stand, methods with two required parameters are not supported.
 
 ### Custom View Data Formatting
 
-If you want to modify the content of the audit to display the old and new values in a specific way, such as showing the value of a specific column instead of the ID for relationships, or even customize the entire view to display data in a different way than the default table, you can use one of these methods (first, make sure the plugin views are published):
+If you want to modify the content of the audit to display the old and new values in a specific way, such as showing the value of a specific column instead of the ID for relationships, or even customize the entire view to display data in a different way than the default table, you can use one of these methods described below (first, make sure the plugin views are published):
+
+#### Show a related column instead of foreign id
+
+To use another field to be displayed for relationships instead of the foreign id, in old and new values, you can add on the `mapping` array, in `filament-auditing.php` config file, the label and field that should be displayed, as well as the related model, using the foreign key as the array key. For example, on an `user` relationship with the `user_id` foreing key, this config will display the user `name` along with the `User` label:
+
+```bash
+'mapping' => [
+        'user_id' => [
+            'model' => App\Models\User::class,
+            'field' => 'name',
+            'label' => 'User',
+        ],
+    ],
+```
+
+And you'd like to customize the view, you can do it in the published view `views/vendor/filament-auditing/tables/columns/key-value.blade.php` file.
 
 #### Customizing the Old and New Values
 
-To customize the presentation for the old and new values, you can set the `custom_old_and_new_values_column_view` config value to `false` on `config/filament-auditing.php` file:
-```php
-'custom_old_and_new_values_column_view' => false,
-```
-
-Then add a `formatAuditFieldsForPresentation($field, $record)` method on the model that is auditable, with two parameters:
+If you need to customize the presentation for other old and new values, besides the related fields, you can add a `formatAuditFieldsForPresentation($field, $record)` method on the model that is auditable, with two parameters:
 - the first parameter contains the name of the field (`old_values` or `new_values`).
 - the second parameter contains de current audit record
 
 This method must return the formatted audit fields.
 
-For example, let's say you have an `Article` model that is auditable and contains a related user, and added a `formatAuditFieldsForPresentation($field, $record)` method that returns the related user name instead of the id, and the data formatted with some HTML code:
+For example, let's say you have an `Article` model that is auditable and contains a related user, and you added a `formatAuditFieldsForPresentation($field, $record)` method that returns the related user name instead of the id, and the data formatted with some HTML code:
 
 ```php
 <?php
@@ -201,7 +214,8 @@ If you'd like to customize the entire view content, you may set the `custom_audi
 'custom_audits_view' => true,
 ```
 
-This modification will allow you to take full control of the display and tailor it to your specific requirements. You can now add your custom content on `resources/views/vendor/filament-auditing/tables/custom-audit-content.blade.php` file. For example:
+This modification will allow you to take full control of the display and tailor it to your specific requirements. You can now add your custom content on `resources/views/vendor/filament-auditing/tables/custom-audit-content.blade.php` file. 
+For example:
 
 ```php
 @php
