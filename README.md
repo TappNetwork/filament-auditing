@@ -1,5 +1,10 @@
 # Filament Laravel Auditing
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tapp/filament-auditing.svg?style=flat-square)](https://packagist.org/packages/tapp/filament-auditing)
+![GitHub Tests Action Status](https://github.com/TappNetwork/filament-auditing/actions/workflows/run-tests.yml/badge.svg)
+![GitHub Code Style Action Status](https://github.com/TappNetwork/filament-auditing/actions/workflows/fix-php-code-style-issues.yml/badge.svg)
+[![Total Downloads](https://img.shields.io/packagist/dt/tapp/filament-auditing.svg?style=flat-square)](https://packagist.org/packages/tapp/filament-auditing)
+
 A Filament plugin for [Laravel Auditing](https://laravel-auditing.com/) package.
 This plugin contains a relation manager for audits that you can add to your Filament resources.
 
