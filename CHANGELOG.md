@@ -2,6 +2,14 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v3.0.7 - 2024-08-15
+
+### What's Changed
+
+* Add the ability to customize the presentation by @andreia in https://github.com/TappNetwork/filament-auditing/pull/26
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v3.0.6...v3.0.7
+
 ## v3.0.6 - 2024-05-31
 
 ### What's Changed
