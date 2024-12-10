@@ -135,7 +135,7 @@ class AuditsRelationManager extends RelationManager
                                 return $columnClass->$value();
                             }
 
-                            return $columnClass->$key(...Arr::map($value));
+                            return $columnClass->$key(...Arr::wrap($value));
                         });
 
                         return $columnClass;
