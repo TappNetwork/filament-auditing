@@ -2,6 +2,18 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v3.0.8 - 2024-12-12
+
+### What's Changed
+
+* Allow multiple parameter methods when extending columns by @intrepidws in https://github.com/TappNetwork/filament-auditing/pull/34
+
+### New Contributors
+
+* @intrepidws made their first contribution in https://github.com/TappNetwork/filament-auditing/pull/34
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v3.0.7...v3.0.8
+
 ## v3.0.7 - 2024-08-15
 
 ### What's Changed
