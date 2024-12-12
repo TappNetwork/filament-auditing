@@ -130,7 +130,25 @@ After adding this information in the config, please run this command for changes
 php artisan optimize
 ```
 
-As things stand, methods with two required parameters are not supported.
+Methods with two or more parameters can be specified with an array like so:
+
+```php
+<?php
+
+return [
+
+    'audits_extend' => [
+       'created_at' => [
+           'class' => \Filament\Tables\Columns\TextColumn::class, // required
+           'methods' => [
+               'sortable',
+               'date' => ['Y-m-d H:i:s', 'America/New_York'],
+            ],
+        ],
+    ]
+
+];
+```
 
 ### Custom View Data Formatting
 
