@@ -65,6 +65,7 @@ class AuditsRelationManager extends RelationManager
         return $table
             ->modifyQueryUsing(fn (Builder $query) => $query->with('user')->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
             ->content(fn (): ?View => config('filament-auditing.custom_audits_view') ? view('filament-auditing::tables.custom-audit-content', Arr::add(self::customViewParameters(), 'owner', $this->getOwnerRecord())) : null)
+            ->emptyStateHeading(trans('filament-auditing::filament-auditing.table.empty_state_heading'))
             ->columns(Arr::flatten([
                 Tables\Columns\TextColumn::make('user.name')
                     ->label(trans('filament-auditing::filament-auditing.column.user_name')),

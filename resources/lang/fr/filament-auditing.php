@@ -9,6 +9,7 @@ return [
     */
 
     'table.heading' => 'Audits',
+    'table.empty_state_heading' => "Pas d'audits",
 
     /*
     |--------------------------------------------------------------------------
