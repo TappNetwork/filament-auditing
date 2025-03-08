@@ -2,6 +2,18 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v3.0.9 - 2025-03-08
+
+### What's Changed
+
+* add empty state heading by @erossdev in https://github.com/TappNetwork/filament-auditing/pull/38
+
+### New Contributors
+
+* @erossdev made their first contribution in https://github.com/TappNetwork/filament-auditing/pull/38
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v3.0.8...v3.0.9
+
 ## v3.0.8 - 2024-12-12
 
 ### What's Changed
