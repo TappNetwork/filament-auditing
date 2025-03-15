@@ -14,4 +14,4 @@ yarn-error.log
 composer.phar
 phpunit.xml
 phpstan.neon
-.composer.lock
+composer.lock
