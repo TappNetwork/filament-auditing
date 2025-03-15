@@ -2,6 +2,18 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v3.1.0 - 2025-03-15
+
+### What's Changed
+
+* Laravel 12 Support by @swilla in https://github.com/TappNetwork/filament-auditing/pull/39
+
+### New Contributors
+
+* @swilla made their first contribution in https://github.com/TappNetwork/filament-auditing/pull/39
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v3.0.9...v3.1.0
+
 ## v3.0.9 - 2025-03-08
 
 ### What's Changed
