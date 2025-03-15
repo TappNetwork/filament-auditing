@@ -1,0 +1,31 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method Spatie\\LaravelPackageTools\\Package\:\:hasTranslations\(\) invoked with 1 parameter, 0 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/FilamentAuditingServiceProvider.php
+
+		-
+			message: '#^Access to an undefined property OwenIt\\Auditing\\Contracts\\Audit\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/RelationManagers/AuditsRelationManager.php
+
+		-
+			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/RelationManagers/AuditsRelationManager.php
+
+		-
+			message: '#^Call to function method_exists\(\) with Illuminate\\Database\\Eloquent\\Model and ''formatAuditFieldsFo…'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: src/RelationManagers/AuditsRelationManager.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: src/RelationManagers/AuditsRelationManager.php
