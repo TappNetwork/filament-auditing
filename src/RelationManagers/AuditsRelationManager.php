@@ -2,6 +2,7 @@
 
 namespace Tapp\FilamentAuditing\RelationManagers;
 
+use Filament\Actions\ActionGroup;
 use Filament\Actions\ViewAction;
 use Filament\Facades\Filament;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -12,7 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 use Tapp\FilamentAuditing\Concerns\HasExtraColumns;
 use Tapp\FilamentAuditing\Concerns\HasFormattedData;
 use Tapp\FilamentAuditing\Filament\Actions\RestoreAuditAction;

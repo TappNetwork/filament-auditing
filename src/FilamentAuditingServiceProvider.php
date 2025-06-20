@@ -13,9 +13,9 @@ class FilamentAuditingServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name('filament-auditing')
-            ->hasConfigFile('filament-auditing')
-            ->hasTranslations('filament-auditing')
-            ->hasViews('filament-auditing');
+            ->hasConfigFile()
+            ->hasTranslations()
+            ->hasViews();
     }
 
     public function packageBooted(): void
