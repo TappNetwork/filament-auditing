@@ -6,7 +6,7 @@ parameters:
 			count: 1
 			path: src/FilamentAuditingServiceProvider.php
 
-        -
+		-
 			message: '#^Unreachable statement \- code above always terminates\.$#'
 			identifier: deadCode.unreachable
 			count: 1
