@@ -1,5 +1,7 @@
 <?php
 
+use Tapp\FilamentAuditing\Filament\Resources\Audits\AuditResource;
+
 return [
 
     'audits_sort' => [
@@ -8,6 +10,8 @@ return [
     ],
 
     'is_lazy' => true,
+
+    'grouped_table_actions' => false,
 
     /**
      *  Extending Columns
@@ -33,6 +37,10 @@ return [
     ],
 
     'mapping' => [
+    ],
+
+    'resources' => [
+        'AuditResource' => AuditResource::class,
     ],
 
 ];
