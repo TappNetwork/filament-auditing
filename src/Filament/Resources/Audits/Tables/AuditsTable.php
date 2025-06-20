@@ -3,18 +3,17 @@
 namespace Tapp\FilamentAuditing\Filament\Resources\Audits\Tables;
 
 use Filament\Actions\ActionGroup;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\View\View;
-use Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas\AuditFilters;
 use Tapp\FilamentAuditing\Concerns\HasExtraColumns;
 use Tapp\FilamentAuditing\Concerns\HasFormattedData;
 use Tapp\FilamentAuditing\Filament\Actions\RestoreAuditAction;
+use Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas\AuditFilters;
 use Tapp\FilamentAuditing\Filament\Tables\Columns\AuditValuesColumn;
 
 class AuditsTable

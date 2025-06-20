@@ -4,9 +4,9 @@ namespace Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas;
 
 use Filament\Infolists\Components\KeyValueEntry;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
 class AuditInfolist
@@ -56,7 +56,7 @@ class AuditInfolist
                                     ->hiddenLabel()
                                     ->keyLabel('Field'),
                             ]),
-                    ])
+                    ]),
             ]);
     }
 }

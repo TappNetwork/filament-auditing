@@ -2,10 +2,9 @@
 
 namespace Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\DatePicker;
 use Filament\Schemas\Components\Fieldset;
+use Filament\Tables\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 
 class AuditFilters
@@ -23,7 +22,7 @@ class AuditFilters
                             DatePicker::make('created_until')
                                 ->label(trans('filament-auditing::filament-auditing.filter.created_until'))
                                 ->columnSpanFull(),
-                        ])
+                        ]),
                 ])
                 ->query(function (Builder $query, array $data): Builder {
                     return $query

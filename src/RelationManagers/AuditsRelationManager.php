@@ -2,37 +2,23 @@
 
 namespace Tapp\FilamentAuditing\RelationManagers;
 
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\Action;
-use Filament\Facades\Filament;
-use Filament\Notifications\Notification;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Actions\ViewAction;
-use Filament\Tables;
-use Filament\Tables\Columns\Column;
-use Filament\Tables\Filters\Filter;
-use Filament\Tables\Table;
-use Filament\Forms\Components\DatePicker;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Components\KeyValueEntry;
+use Filament\Facades\Filament;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Fieldset;
-use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Components\Utilities\Get;
+use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
-use OwenIt\Auditing\Contracts\Audit;
-use OwenIt\Auditing\Models\Audit as AuditModel;
 use Tapp\FilamentAuditing\Concerns\HasExtraColumns;
 use Tapp\FilamentAuditing\Concerns\HasFormattedData;
 use Tapp\FilamentAuditing\Filament\Actions\RestoreAuditAction;
-use Tapp\FilamentAuditing\Filament\Tables\Columns\AuditValuesColumn;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas\AuditFilters;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas\AuditInfolist;
+use Tapp\FilamentAuditing\Filament\Tables\Columns\AuditValuesColumn;
 
 class AuditsRelationManager extends RelationManager
 {
@@ -77,7 +63,7 @@ class AuditsRelationManager extends RelationManager
         }
 
         return $table
-            ->recordTitle(fn (Model $record): string => "Audit")
+            ->recordTitle(fn (Model $record): string => 'Audit')
             ->modifyQueryUsing(fn (Builder $query) => $query->with('user')->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
             ->content(fn (): ?View => config('filament-auditing.custom_audits_view') ? view('filament-auditing::tables.custom-audit-content', Arr::add(self::customViewParameters(), 'owner', $this->getOwnerRecord())) : null)
             ->emptyStateHeading(trans('filament-auditing::filament-auditing.table.empty_state_heading'))

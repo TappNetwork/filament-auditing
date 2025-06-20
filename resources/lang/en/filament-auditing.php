@@ -48,9 +48,9 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'infolist.tab.info'  => 'Info',
-    'infolist.tab.old-values'  => 'Old Values',
-    'infolist.tab.new-values'  => 'New Values',
+    'infolist.tab.info' => 'Info',
+    'infolist.tab.old-values' => 'Old Values',
+    'infolist.tab.new-values' => 'New Values',
     'infolist.user' => 'User',
     'infolist.created-at' => 'Created',
     'infolist.audited' => 'Audited',

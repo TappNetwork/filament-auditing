@@ -2,7 +2,6 @@
 
 namespace Tapp\FilamentAuditing\Concerns;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
 trait HasExtraColumns
