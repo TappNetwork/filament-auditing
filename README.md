@@ -146,7 +146,7 @@ public static function getRelations(): array
 }
 ```
 
-To show the Audit resource, add to your panel provider, e.g. `AdminPanelProvider.php`:
+To show the Audit resource in navigation menu, add to your panel provider, e.g. `AdminPanelProvider.php`:
 
 ```php
 use Tapp\FilamentAuditing\FilamentAuditingPlugin;
