@@ -22,6 +22,17 @@ return [
     'column.created_at' => 'Created',
     'column.old_values' => 'Old Values',
     'column.new_values' => 'New Values',
+    'column.auditable_type' => 'Audited',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Table Filters
+    |--------------------------------------------------------------------------
+    */
+
+    'filter.created_at' => 'Created',
+    'filter.created_from' => 'From',
+    'filter.created_until' => 'Until',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,6 +41,24 @@ return [
     */
 
     'action.restore' => 'Restore',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Resource Infolist
+    |--------------------------------------------------------------------------
+    */
+
+    'infolist.tab.info'  => 'Info',
+    'infolist.tab.old-values'  => 'Old Values',
+    'infolist.tab.new-values'  => 'New Values',
+    'infolist.user' => 'User',
+    'infolist.created-at' => 'Created',
+    'infolist.audited' => 'Audited',
+    'infolist.event' => 'Event',
+    'infolist.url' => 'URL',
+    'infolist.ip-address' => 'IP Address',
+    'infolist.user-agent' => 'User Agent',
+    'infolist.tags' => 'Tags',
 
     /*
     |--------------------------------------------------------------------------

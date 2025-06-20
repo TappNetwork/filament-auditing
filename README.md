@@ -47,6 +47,8 @@ This is the content of the published config file:
 ```php
 <?php
 
+use Tapp\FilamentAuditing\Filament\Resources\Audits\AuditResource;
+
 return [
 
     'audits_sort' => [
@@ -55,7 +57,16 @@ return [
     ],
 
     'is_lazy' => true,
-    
+
+    'grouped_table_actions' => false,
+
+    /**
+     *  Extending Columns
+     * --------------------------------------------------------------------------
+     *  In case you need to add a column to the AuditsRelationManager that does
+     *  not already exist in the table, you can add it here, and it will be
+     *  prepended to the table builder.
+     */
     'audits_extend' => [
         // 'url' => [
         //     'class' => \Filament\Tables\Columns\TextColumn::class,
@@ -65,7 +76,7 @@ return [
         //         'default' => 'N/A'
         //     ]
         // ],
-    ]
+    ],
 
     'custom_audits_view' => false,
 
@@ -74,10 +85,30 @@ return [
 
     'mapping' => [
     ],
+
+    'resources' => [
+        'AuditResource' => AuditResource::class,
+    ],
+
 ];
+
 ```
 
-The `audits_sort` can be used to change the default sort on the audits table.
+`audits_sort`: can be used to change the default sort on the audits table.
+
+`grouped_table_actions`: set to true to group the actions on the audits table.
+
+### Integrate Filament Auditing Tailwind classes
+
+Filament recommends developers create a custom theme to better support plugin's additional Tailwind classes. After you have created your custom theme, add the Filament Auditing vendor path to your `theme.css` file, usually located in `resources/css/filament/admin/theme.css`:
+
+```css
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament';
+@source '../../../../resources/views/filament';
+@source '../../../../vendor/tapp/filament-auditing'; // Add this line
+```
 
 ## Usage
 
@@ -96,9 +127,43 @@ public static function getRelations(): array
 }
 ```
 
+To show the Audit resource, add to your panel provider, e.g. `AdminPanelProvider.php`:
+
+```php
+use Tapp\FilamentAuditing\FilamentAuditingPlugin;
+
+return $panel
+    ->plugins([
+        FilamentAuditingPlugin::make(),
+    ]);
+```
+
 That's it, you're all set!
 
 If you access your resource, and edit some data, you will now see the audits table on edit and view pages.
+
+## Appareance
+
+Relation Manager
+
+![Filament Audit Relation Manager](https://raw.githubusercontent.com/TappNetwork/filament-auditing/4.x/art/relation_manager.png)
+
+Resource
+
+![Filament Audit Resource](https://raw.githubusercontent.com/TappNetwork/filament-auditing/4.x/art/resource.png)
+
+View Audit
+
+![Filament Audit Resource](https://raw.githubusercontent.com/TappNetwork/filament-auditing/4.x/art/infolist1.png)
+
+![Filament Audit Resource](https://raw.githubusercontent.com/TappNetwork/filament-auditing/4.x/art/infolist2.png)
+
+![Filament Audit Resource](https://raw.githubusercontent.com/TappNetwork/filament-auditing/4.x/art/infolist3.png)
+
+Restore Action
+
+![Filament Audit Resource](https://raw.githubusercontent.com/TappNetwork/filament-auditing/4.x/art/restore_action.png)
+
 
 ### Extending Columns
 
