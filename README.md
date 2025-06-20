@@ -1,7 +1,7 @@
 # Filament Laravel Auditing
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tapp/filament-auditing.svg?style=flat-square)](https://packagist.org/packages/tapp/filament-auditing)
-![Code Style Action Status](https://github.com/TappNetwork/filament-auditing/actions/workflows/pint.yml/badge.svg)
+![Code Style Action Status](https://github.com/TappNetwork/filament-auditing/actions/workflows/fix-php-code-style-issues.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/tapp/filament-auditing.svg?style=flat-square)](https://packagist.org/packages/tapp/filament-auditing)
 
 A Filament plugin for [Laravel Auditing](https://laravel-auditing.com/) package.
@@ -10,20 +10,46 @@ This plugin contains a relation manager for audits that you can add to your Fila
 This package provides a Filament resource manager that shows a table with all audits on view and edit pages and allows
 restore audits.
 
+## Version Compatibility
+
+ Filament | Filament Auditing
+:---------|:-----------------
+ 2.x      | 2.x
+ 3.x      | 3.x
+ 4.x      | 4.x
+
 ## Installation
+
+> [!IMPORTANT]
+> Please check the **Filament Auditing** plugin version you should use in the **Version Compatibility** table above.
 
 > **Note**
 > This plugin uses the [Laravel Auditing](https://laravel-auditing.com/) package. First install and configure this
 > package.
 
-You can install the plugin via composer:
+You can install the plugin via Composer.
+
+### For Filament 3
 
 ```bash
 composer require tapp/filament-auditing:"^3.0"
 ```
 
-> **Note** 
-> For **Filament 2.x** check the **[2.x](https://github.com//TappNetwork/filament-auditing/tree/2.x)** branch
+### For Filament 4
+
+Please visit the **[4.x](https://github.com//TappNetwork/filament-auditing/tree/4.x)** branch for a detailed documention of the new features available in version 4.
+
+```bash
+composer require tapp/filament-auditing:"^4.0"
+```
+
+### For Filament 2
+
+Please visit the **[2.x](https://github.com//TappNetwork/filament-auditing/tree/2.x)** branch for a detailed documention about version 2.
+
+```bash
+composer require tapp/filament-auditing:"^2.0"
+```
 
 You can publish the view files with:
 
