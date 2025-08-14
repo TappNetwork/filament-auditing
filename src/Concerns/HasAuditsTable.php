@@ -18,8 +18,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait HasAuditsTable
 {
-    protected static string $relationship = 'audits';
-
     public function table(Table $table): Table
     {
         $oldValuesColumn =
@@ -182,11 +180,6 @@ trait HasAuditsTable
             ->title(trans('filament-auditing::filament-auditing.notification.unchanged'))
             ->warning()
             ->send();
-    }
-
-    public static function getTitle(Model $ownerRecord, string $pageClass): string
-    {
-        return trans('filament-auditing::filament-auditing.table.heading');
     }
 
     protected function canCreate(): bool

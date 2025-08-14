@@ -17,7 +17,9 @@ use OwenIt\Auditing\Contracts\Audit;
 
 class AuditsRelationManager extends RelationManager
 {
-    use Tapp\FilamentAuditing\Concerns\HasAuditsTable;
+    use \Tapp\FilamentAuditing\Concerns\HasAuditsTable;
+
+    protected static string $relationship = 'audits';
 
     protected static ?string $recordTitleAttribute = 'id';
 
@@ -36,5 +38,10 @@ class AuditsRelationManager extends RelationManager
     protected static function customViewParameters(): array
     {
         return config('filament-auditing.custom_view_parameters');
+    }
+
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
+    {
+        return trans('filament-auditing::filament-auditing.table.heading');
     }
 }
