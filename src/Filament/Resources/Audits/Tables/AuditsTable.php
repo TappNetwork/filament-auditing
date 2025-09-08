@@ -34,7 +34,7 @@ class AuditsTable
         }
 
         return $table
-            ->modifyQueryUsing(fn (Builder $query) => $query->with('user')->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
+            ->modifyQueryUsing(fn (Builder $query) => $query->with(['user', 'auditable'])->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction')))
             ->emptyStateHeading(trans('filament-auditing::filament-auditing.table.empty_state_heading'))
             ->columns(Arr::flatten([
                 TextColumn::make('user.name')
