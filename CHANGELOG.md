@@ -2,6 +2,18 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.0.1 - 2025-09-08
+
+### What's Changed
+
+* fix(relation-manager): eager load auditable relation to properly parse restoreAudit permission by @andrefedalto in https://github.com/TappNetwork/filament-auditing/pull/47
+
+### New Contributors
+
+* @andrefedalto made their first contribution in https://github.com/TappNetwork/filament-auditing/pull/47
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.0...v4.0.1
+
 ## v4.0.0 - 2025-06-20
 
 ### What's Changed
