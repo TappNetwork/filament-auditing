@@ -28,9 +28,8 @@ trait CanRestoreAudit
 
         $restore = $audit->old_values;
 
-        Arr::pull($restore, 'id');
-
         if (is_array($restore)) {
+            Arr::pull($restore, 'id');
 
             foreach ($restore as $key => $item) {
                 $decode = json_decode($item);
