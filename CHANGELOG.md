@@ -2,6 +2,14 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.0.2 - 2025-09-15
+
+### What's Changed
+
+* Phpstan by @andreia in https://github.com/TappNetwork/filament-auditing/pull/50
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.1...v4.0.2
+
 ## v4.0.1 - 2025-09-08
 
 ### What's Changed
