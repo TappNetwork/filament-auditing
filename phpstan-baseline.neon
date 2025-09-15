@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			identifier: deadCode.unreachable
-			count: 1
-			path: src/Filament/Actions/RestoreAuditAction.php
-
-		-
 			message: '#^Call to an undefined method Tapp\\FilamentAuditing\\Filament\\Resources\\Audits\\Tables\\AuditsTable\:\:getOwnerRecord\(\)\.$#'
 			identifier: method.notFound
 			count: 2
@@ -29,9 +23,3 @@ parameters:
 			identifier: property.notFound
 			count: 1
 			path: src/Filament/Actions/RestoreAuditAction.php
-
-		-
-			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: src/Concerns/CanRestoreAudit.php
