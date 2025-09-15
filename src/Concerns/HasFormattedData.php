@@ -10,8 +10,6 @@ trait HasFormattedData
     public function formatData(Model $record, ?string $name = null, ?array $state = null): mixed
     {
         if (method_exists($this->getOwnerRecord(), 'formatAuditFieldsForPresentation')) {
-            info('entrou 1');
-
             return $this->getOwnerRecord()->formatAuditFieldsForPresentation($name, $record);
         }
 
