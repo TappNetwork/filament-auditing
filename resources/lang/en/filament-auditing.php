@@ -59,6 +59,7 @@ return [
     'infolist.ip-address' => 'IP Address',
     'infolist.user-agent' => 'User Agent',
     'infolist.tags' => 'Tags',
+    'infolist.field' => 'Field',
 
     /*
     |--------------------------------------------------------------------------
