@@ -48,13 +48,13 @@ class AuditInfolist
                             ->schema([
                                 KeyValueEntry::make('old_values')
                                     ->hiddenLabel()
-                                    ->keyLabel('Field'),
+                                    ->keyLabel(trans('filament-auditing::filament-auditing.infolist.field')),
                             ]),
                         Tab::make(trans('filament-auditing::filament-auditing.infolist.tab.new-values'))
                             ->schema([
                                 KeyValueEntry::make('new_values')
                                     ->hiddenLabel()
-                                    ->keyLabel('Field'),
+                                    ->keyLabel(trans('filament-auditing::filament-auditing.infolist.field')),
                             ]),
                     ]),
             ]);
