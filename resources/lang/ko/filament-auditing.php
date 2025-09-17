@@ -1,14 +1,13 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Table Header
     |--------------------------------------------------------------------------
     */
 
-    'table.heading' => '변경이력',
+    'table.heading'             => '변경이력',
     'table.empty_state_heading' => '감사 없음',
 
     /*
@@ -17,11 +16,22 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'column.user_name' => '사용자',
-    'column.event' => '이벤트',
-    'column.created_at' => '등록됨',
-    'column.old_values' => '기존 내용',
-    'column.new_values' => '신규 내용',
+    'column.user_name'      => '사용자',
+    'column.event'          => '이벤트',
+    'column.created_at'     => '등록일',
+    'column.old_values'     => '이전 값',
+    'column.new_values'     => '새 값',
+    'column.auditable_type' => '감사됨',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Table Filters
+    |--------------------------------------------------------------------------
+    */
+
+    'filter.created_at'    => '등록일',
+    'filter.created_from'  => '시작일',
+    'filter.created_until' => '종료일',
 
     /*
     |--------------------------------------------------------------------------
@@ -33,11 +43,28 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Resource Infolist
+    |--------------------------------------------------------------------------
+    */
+
+    'infolist.tab.info'       => '정보',
+    'infolist.tab.old-values' => '이전 값',
+    'infolist.tab.new-values' => '새 값',
+    'infolist.user'           => '사용자',
+    'infolist.created-at'     => '등록일',
+    'infolist.audited'        => '감사됨',
+    'infolist.event'          => '이벤트',
+    'infolist.url'            => 'URL',
+    'infolist.ip-address'     => 'IP 주소',
+    'infolist.user-agent'     => '사용자 에이전트',
+    'infolist.tags'           => '태그',
+
+    /*
+    |--------------------------------------------------------------------------
     | Notifications
     |--------------------------------------------------------------------------
     */
 
-    'notification.restored' => '변경이력 복원',
+    'notification.restored'  => '변경이력 복원됨',
     'notification.unchanged' => '변경할 사항이 없습니다.',
-
 ];
