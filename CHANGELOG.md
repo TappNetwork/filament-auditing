@@ -2,6 +2,18 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.0.3 - 2025-09-17
+
+### What's Changed
+
+* fix: hardcoded label in infolist by @Pronesti in https://github.com/TappNetwork/filament-auditing/pull/51
+
+### New Contributors
+
+* @Pronesti made their first contribution in https://github.com/TappNetwork/filament-auditing/pull/51
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.2...v4.0.3
+
 ## v4.0.2 - 2025-09-15
 
 ### What's Changed
