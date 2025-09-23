@@ -1,13 +1,14 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Table Header
     |--------------------------------------------------------------------------
     */
 
-    'table.heading'             => 'Auditorías',
+    'table.heading' => 'Auditorías',
     'table.empty_state_heading' => 'Sin auditorías',
 
     /*
@@ -16,11 +17,11 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'column.user_name'      => 'Usuario',
-    'column.event'          => 'Evento',
-    'column.created_at'     => 'Creado el',
-    'column.old_values'     => 'Valores antiguos',
-    'column.new_values'     => 'Nuevos valores',
+    'column.user_name' => 'Usuario',
+    'column.event' => 'Evento',
+    'column.created_at' => 'Creado en',
+    'column.old_values' => 'Valores antiguos',
+    'column.new_values' => 'Nuevos valores',
     'column.auditable_type' => 'Auditado',
 
     /*
@@ -65,6 +66,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'notification.restored'  => 'Auditoría restaurada',
+    'notification.restored' => 'Auditoría restaurada',
     'notification.unchanged' => 'Nada que cambiar',
+
 ];

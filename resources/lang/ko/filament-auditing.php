@@ -1,13 +1,14 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Table Header
     |--------------------------------------------------------------------------
     */
 
-    'table.heading'             => '변경이력',
+    'table.heading' => '변경이력',
     'table.empty_state_heading' => '감사 없음',
 
     /*
@@ -16,11 +17,11 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'column.user_name'      => '사용자',
-    'column.event'          => '이벤트',
-    'column.created_at'     => '등록일',
-    'column.old_values'     => '이전 값',
-    'column.new_values'     => '새 값',
+    'column.user_name' => '사용자',
+    'column.event' => '이벤트',
+    'column.created_at' => '등록일',
+    'column.old_values' => '이전 값',
+    'column.new_values' => '새 값',
     'column.auditable_type' => '감사됨',
 
     /*
@@ -65,6 +66,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'notification.restored'  => '변경이력 복원됨',
+    'notification.restored' => '변경이력 복원',
     'notification.unchanged' => '변경할 사항이 없습니다.',
+
 ];
