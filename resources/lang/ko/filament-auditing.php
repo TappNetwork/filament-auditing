@@ -19,9 +19,9 @@ return [
 
     'column.user_name' => '사용자',
     'column.event' => '이벤트',
-    'column.created_at' => '등록일',
-    'column.old_values' => '이전 값',
-    'column.new_values' => '새 값',
+    'column.created_at' => '등록됨',
+    'column.old_values' => '기존 내용',
+    'column.new_values' => '신규 내용',
     'column.auditable_type' => '감사됨',
 
     /*

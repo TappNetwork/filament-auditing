@@ -19,8 +19,9 @@ return [
 
     'column.user_name' => 'المستخدم',
     'column.event' => 'العملية',
-    'column.created_at' => 'تاريخ الإنشاء',
+    'column.created_at' => 'تاريخ التعديل',
     'column.old_values' => 'القيم السابقة',
+    'column.new_values' => 'القيم الجديدة',
     'column.new_values' => 'القيم الجديدة',
     'column.auditable_type' => 'تم التدقيق',
 
