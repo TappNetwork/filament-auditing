@@ -30,8 +30,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'filter.created_at'    => 'Criado',
-    'filter.created_from'  => 'De',
+    'filter.created_at' => 'Criado',
+    'filter.created_from' => 'De',
     'filter.created_until' => 'Até',
 
     /*
@@ -48,17 +48,17 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'infolist.tab.info'       => 'Info',
+    'infolist.tab.info' => 'Info',
     'infolist.tab.old-values' => 'Valores Antigos',
     'infolist.tab.new-values' => 'Novos Valores',
-    'infolist.user'           => 'Usuário',
-    'infolist.created-at'     => 'Criado em',
-    'infolist.audited'        => 'Auditado',
-    'infolist.event'          => 'Evento',
-    'infolist.url'            => 'URL',
-    'infolist.ip-address'     => 'Endereço IP',
-    'infolist.user-agent'     => 'User Agent',
-    'infolist.tags'           => 'Tags',
+    'infolist.user' => 'Usuário',
+    'infolist.created-at' => 'Criado em',
+    'infolist.audited' => 'Auditado',
+    'infolist.event' => 'Evento',
+    'infolist.url' => 'URL',
+    'infolist.ip-address' => 'Endereço IP',
+    'infolist.user-agent' => 'User Agent',
+    'infolist.tags' => 'Tags',
 
     /*
     |--------------------------------------------------------------------------

@@ -31,8 +31,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'filter.created_at'    => 'تاريخ الإنشاء',
-    'filter.created_from'  => 'من',
+    'filter.created_at' => 'تاريخ الإنشاء',
+    'filter.created_from' => 'من',
     'filter.created_until' => 'إلى',
 
     /*
@@ -49,17 +49,17 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'infolist.tab.info'       => 'معلومات',
+    'infolist.tab.info' => 'معلومات',
     'infolist.tab.old-values' => 'القيم السابقة',
     'infolist.tab.new-values' => 'القيم الجديدة',
-    'infolist.user'           => 'المستخدم',
-    'infolist.created-at'     => 'تاريخ الإنشاء',
-    'infolist.audited'        => 'تم التدقيق',
-    'infolist.event'          => 'العملية',
-    'infolist.url'            => 'الرابط',
-    'infolist.ip-address'     => 'عنوان IP',
-    'infolist.user-agent'     => 'متصفح المستخدم',
-    'infolist.tags'           => 'الوسوم',
+    'infolist.user' => 'المستخدم',
+    'infolist.created-at' => 'تاريخ الإنشاء',
+    'infolist.audited' => 'تم التدقيق',
+    'infolist.event' => 'العملية',
+    'infolist.url' => 'الرابط',
+    'infolist.ip-address' => 'عنوان IP',
+    'infolist.user-agent' => 'متصفح المستخدم',
+    'infolist.tags' => 'الوسوم',
 
     /*
     |--------------------------------------------------------------------------
