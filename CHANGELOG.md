@@ -2,6 +2,14 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.0.4 - 2025-09-28
+
+### What's Changed
+
+* fix(translations): add missing translations by @andrefedalto in https://github.com/TappNetwork/filament-auditing/pull/48
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.3...v4.0.4
+
 ## v4.0.3 - 2025-09-17
 
 ### What's Changed
