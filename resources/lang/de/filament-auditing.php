@@ -30,7 +30,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'filter.created_at' => 'Erstellt',
+    'filter.created_at' => 'Erstellt am',
     'filter.created_from' => 'Von',
     'filter.created_until' => 'Bis',
 
@@ -49,10 +49,10 @@ return [
     */
 
     'infolist.tab.info' => 'Info',
-    'infolist.tab.old-values' => 'Alte Werte',
-    'infolist.tab.new-values' => 'Neue Werte',
+    'infolist.tab.old-values' => 'Alter Wert',
+    'infolist.tab.new-values' => 'Neuer Wert',
     'infolist.user' => 'Benutzer',
-    'infolist.created-at' => 'Erstellt',
+    'infolist.created-at' => 'Erstellt am',
     'infolist.audited' => 'Auditiert',
     'infolist.event' => 'Event',
     'infolist.url' => 'URL',

@@ -22,7 +22,6 @@ return [
     'column.created_at' => 'تاريخ التعديل',
     'column.old_values' => 'القيم السابقة',
     'column.new_values' => 'القيم الجديدة',
-    'column.new_values' => 'القيم الجديدة',
     'column.auditable_type' => 'تم التدقيق',
 
     /*
@@ -31,7 +30,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'filter.created_at' => 'تاريخ الإنشاء',
+    'filter.created_at' => 'تاريخ التعديل',
     'filter.created_from' => 'من',
     'filter.created_until' => 'إلى',
 
@@ -53,7 +52,7 @@ return [
     'infolist.tab.old-values' => 'القيم السابقة',
     'infolist.tab.new-values' => 'القيم الجديدة',
     'infolist.user' => 'المستخدم',
-    'infolist.created-at' => 'تاريخ الإنشاء',
+    'infolist.created-at' => 'تاريخ التعديل',
     'infolist.audited' => 'تم التدقيق',
     'infolist.event' => 'العملية',
     'infolist.url' => 'الرابط',
