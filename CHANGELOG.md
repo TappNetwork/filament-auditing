@@ -2,6 +2,54 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.0.4 - 2025-09-28
+
+### What's Changed
+
+* fix(translations): add missing translations by @andrefedalto in https://github.com/TappNetwork/filament-auditing/pull/48
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.3...v4.0.4
+
+## v4.0.3 - 2025-09-17
+
+### What's Changed
+
+* fix: hardcoded label in infolist by @Pronesti in https://github.com/TappNetwork/filament-auditing/pull/51
+
+### New Contributors
+
+* @Pronesti made their first contribution in https://github.com/TappNetwork/filament-auditing/pull/51
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.2...v4.0.3
+
+## v4.0.2 - 2025-09-15
+
+### What's Changed
+
+* Phpstan by @andreia in https://github.com/TappNetwork/filament-auditing/pull/50
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.1...v4.0.2
+
+## v4.0.1 - 2025-09-08
+
+### What's Changed
+
+* fix(relation-manager): eager load auditable relation to properly parse restoreAudit permission by @andrefedalto in https://github.com/TappNetwork/filament-auditing/pull/47
+
+### New Contributors
+
+* @andrefedalto made their first contribution in https://github.com/TappNetwork/filament-auditing/pull/47
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.0...v4.0.1
+
+## v4.0.0 - 2025-06-20
+
+### What's Changed
+
+* Filament 4 upgrade by @andreia in https://github.com/TappNetwork/filament-auditing/pull/43
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v3.1.1...v4.0.0
+
 ## v3.1.1 - 2025-06-04
 
 ### What's Changed
