@@ -30,7 +30,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'filter.created_at' => 'Creado',
+    'filter.created_at' => 'Creado en',
     'filter.created_from' => 'Desde',
     'filter.created_until' => 'Hasta',
 
@@ -52,7 +52,7 @@ return [
     'infolist.tab.old-values' => 'Valores antiguos',
     'infolist.tab.new-values' => 'Nuevos valores',
     'infolist.user' => 'Usuario',
-    'infolist.created-at' => 'Creado el',
+    'infolist.created-at' => 'Creado en',
     'infolist.audited' => 'Auditado',
     'infolist.event' => 'Evento',
     'infolist.url' => 'URL',

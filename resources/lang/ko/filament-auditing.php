@@ -30,7 +30,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'filter.created_at' => '등록일',
+    'filter.created_at' => '등록됨',
     'filter.created_from' => '시작일',
     'filter.created_until' => '종료일',
 
@@ -49,10 +49,10 @@ return [
     */
 
     'infolist.tab.info' => '정보',
-    'infolist.tab.old-values' => '이전 값',
-    'infolist.tab.new-values' => '새 값',
+    'infolist.tab.old-values' => '기존 내용',
+    'infolist.tab.new-values' => '신규 내용',
     'infolist.user' => '사용자',
-    'infolist.created-at' => '등록일',
+    'infolist.created-at' => '등록됨',
     'infolist.audited' => '감사됨',
     'infolist.event' => '이벤트',
     'infolist.url' => 'URL',
