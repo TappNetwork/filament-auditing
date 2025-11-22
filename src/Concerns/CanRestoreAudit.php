@@ -2,6 +2,7 @@
 
 namespace Tapp\FilamentAuditing\Concerns;
 
+use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
@@ -10,6 +11,26 @@ trait CanRestoreAudit
 {
     protected static function restoreAuditSelected($audit)
     {
+        // Verify tenant ownership if tenancy is enabled
+        // This is a defense-in-depth security check. Filament's automatic scoping
+        // should already prevent accessing audits from other tenants, but we check
+        // here as an additional safety measure.
+        if (config('filament-auditing.tenancy.enabled') && class_exists(Filament::class)) {
+            $tenant = Filament::getTenant();
+            if ($tenant) {
+                // Use the tenant relationship to check ownership
+                $auditTenant = $audit->tenant();
+                if ($auditTenant && $auditTenant->getKey() !== $tenant->getKey()) {
+                    Notification::make()
+                        ->title(trans('filament-auditing::filament-auditing.notification.unauthorized'))
+                        ->danger()
+                        ->send();
+
+                    return;
+                }
+            }
+        }
+
         $morphClass = Relation::getMorphedModel($audit->auditable_type) ?? $audit->auditable_type;
 
         $record = $morphClass::find($audit->auditable_id);

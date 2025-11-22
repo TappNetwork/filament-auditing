@@ -43,4 +43,22 @@ return [
         'AuditResource' => AuditResource::class,
     ],
 
+    'tenancy' => [
+        // Enable tenancy support
+        'enabled' => false,
+
+        // The Tenant model class (e.g., App\Models\Team::class, App\Models\Organization::class)
+        'model' => null,
+
+        // The tenant relationship name (defaults to snake_case of tenant model class name)
+        // For example: Team::class -> 'team', Organization::class -> 'organization'
+        // This should match what you configure in your Filament Panel:
+        // ->tenantOwnershipRelationshipName('team')
+        'relationship_name' => null,
+
+        // The tenant column name (defaults to snake_case of tenant model class name + '_id')
+        // You can override this if needed
+        'column' => null,
+    ],
+
 ];
