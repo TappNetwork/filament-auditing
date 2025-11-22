@@ -8,11 +8,11 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Tapp\FilamentAuditing\Models\Audit;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Pages\ListAudits;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Pages\ViewAudit;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas\AuditInfolist;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Tables\AuditsTable;
+use Tapp\FilamentAuditing\Models\Audit;
 
 class AuditResource extends Resource
 {

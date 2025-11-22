@@ -17,7 +17,7 @@ class Audit extends BaseAudit
         // Dynamically resolve the tenant relationship based on configuration
         if (config('filament-auditing.tenancy.enabled')) {
             $relationshipName = static::getTenantRelationshipName();
-            
+
             static::resolveRelationUsing($relationshipName, function ($model) {
                 $tenantModel = config('filament-auditing.tenancy.model');
                 if (! $tenantModel) {
@@ -67,6 +67,7 @@ class Audit extends BaseAudit
         }
 
         $relationshipName = static::getTenantRelationshipName();
+
         return $this->{$relationshipName}();
     }
 }
