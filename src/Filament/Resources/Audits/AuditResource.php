@@ -26,7 +26,7 @@ class AuditResource extends Resource
      */
     public static function isScopedToTenant(): bool
     {
-        return config('filament-auditing.tenancy.enabled', false) 
+        return config('filament-auditing.tenancy.enabled', false)
             && config('filament-auditing.tenancy.model') !== null;
     }
 
