@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Tapp\FilamentAuditing\Models\Audit;
 use Tapp\FilamentAuditing\Resolvers\TenantResolver;
 
 class FilamentAuditingServiceProvider extends PackageServiceProvider
@@ -38,19 +39,20 @@ class FilamentAuditingServiceProvider extends PackageServiceProvider
         // Register custom Audit model if tenancy is enabled
         // This allows us to add the tenant relationship to the Audit model
         if (config('filament-auditing.tenancy.enabled')) {
-            Config::set('audit.implementation', \Tapp\FilamentAuditing\Models\Audit::class);
-        }
+            Config::set('audit.implementation', Audit::class);
 
-        // Register tenant resolver if tenancy is enabled
-        if (config('filament-auditing.tenancy.enabled')) {
+            // Register tenant resolver if tenancy is enabled
             $tenantColumn = config('filament-auditing.tenancy.column');
+            $tenantModel = config('filament-auditing.tenancy.model');
+
+            $relationshipName = config('filament-auditing.tenancy.relationship_name');
+
+            if (! $relationshipName) {
+                $relationshipName = Str::snake(class_basename($tenantModel));
+            }
+
             if (! $tenantColumn) {
-                $tenantModel = config('filament-auditing.tenancy.model');
                 if ($tenantModel) {
-                    $relationshipName = config('filament-auditing.tenancy.relationship_name');
-                    if (! $relationshipName) {
-                        $relationshipName = Str::snake(class_basename($tenantModel));
-                    }
                     $tenantColumn = $relationshipName.'_id';
                 } else {
                     $tenantColumn = 'tenant_id';
@@ -61,6 +63,7 @@ class FilamentAuditingServiceProvider extends PackageServiceProvider
             // This is done at runtime because the resolver key is dynamic
             $resolvers = Config::get('audit.resolvers', []);
             $resolvers[$tenantColumn] = TenantResolver::class;
+
             Config::set('audit.resolvers', $resolvers);
         }
     }
