@@ -66,8 +66,8 @@ trait CanRestoreAudit
      */
     protected static function isUnauthorizedTenantAccess($audit): bool
     {
-        // Early return if tenancy is disabled
-        if (! config('filament-auditing.tenancy.enabled')) {
+        // Early return if tenancy is disabled or tenant model not configured
+        if (! config('filament-auditing.tenancy.enabled') || ! config('filament-auditing.tenancy.model')) {
             return false;
         }
 

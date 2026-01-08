@@ -37,7 +37,7 @@ class Audit extends BaseAudit
     /**
      * Get the tenant relationship name based on configuration.
      */
-    protected static function getTenantRelationshipName(): string
+    public static function getTenantRelationshipName(): string
     {
         $relationshipName = config('filament-auditing.tenancy.relationship_name');
         if ($relationshipName) {
