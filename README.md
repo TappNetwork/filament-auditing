@@ -117,6 +117,80 @@ return [
 
 `grouped_table_actions`: set to true to group the actions on the audits table.
 
+### Multi-Tenancy Support
+
+This plugin supports multi-tenancy for Filament applications. When enabled, all audit records are automatically scoped to the current tenant, ensuring that users only see audits belonging to their tenant.
+
+#### Configuration
+
+To enable tenancy support, update your `config/filament-auditing.php` file:
+
+```php
+'tenancy' => [
+    // Enable tenancy support
+    'enabled' => true,
+
+    // The Tenant model class (e.g., App\Models\Team::class, App\Models\Organization::class)
+    'model' => \App\Models\Team::class,
+
+    // The tenant relationship name (defaults to snake_case of tenant model class name)
+    // For example: Team::class -> 'team', Organization::class -> 'organization'
+    // This should match what you configure in your Filament Panel:
+    // ->tenantOwnershipRelationshipName('team')
+    'relationship_name' => 'teams',
+
+    // The tenant column name (defaults to snake_case of tenant model class name + '_id')
+    // You can override this if needed
+    'column' => 'team_id',
+],
+```
+
+#### Migration
+
+After enabling tenancy, you need to publish and run the migration to add the tenant column to the `audits` table.
+
+First, publish the migration:
+
+```bash
+php artisan vendor:publish --tag="filament-auditing-migrations"
+```
+
+Then, run the migration:
+
+```bash
+php artisan migrate
+```
+
+The migration will automatically add the configured tenant column (e.g., `team_id`) to the `audits` table with a foreign key constraint.
+
+> **Note**: The tenant resolver is automatically registered by the plugin's service provider. You do **not** need to manually add it to your `config/audit.php` file's `resolvers` array. The plugin handles this automatically when tenancy is enabled.
+
+#### How It Works
+
+When tenancy is enabled:
+
+1. **Automatic Tenant Assignment**: New audit records are automatically assigned to the current tenant using Laravel Auditing's resolver system. The plugin automatically registers a custom resolver that gets the current tenant from Filament and sets it on new audit records.
+
+2. **Query Scoping**: All audit queries are automatically scoped to the current tenant:
+   - The AuditResource list page only shows audits for the current tenant
+   - The ViewAudit page only allows viewing audits belonging to the current tenant
+   - The AuditsRelationManager only shows audits for the current tenant
+
+3. **Security**: The restore action validates that the audit belongs to the current tenant before allowing restoration, preventing cross-tenant data access.
+
+#### Important Notes
+
+- **Enable Before Migrations**: Make sure to enable tenancy in your config file before running migrations. The migration checks the config to determine whether to add the tenant column.
+
+- **Panel Configuration**: Ensure your Filament panel is configured with tenancy. For example, in your `AppPanelProvider`:
+
+```php
+->tenant(Team::class, slugAttribute: 'slug')
+->tenantDomain('{tenant:slug}.'.$host)
+```
+
+- **Existing Audits**: If you enable tenancy after audits have already been created, existing audits will have `null` for the tenant column. You may need to backfill this data manually if required.
+
 ### Integrate Filament Auditing Tailwind classes
 
 Filament recommends developers create a custom theme to better support plugin's additional Tailwind classes. After you have created your custom theme, add the Filament Auditing vendor path to your `theme.css` file, usually located in `resources/css/filament/admin/theme.css`:
