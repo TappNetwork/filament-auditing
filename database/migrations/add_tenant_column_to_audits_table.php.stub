@@ -16,6 +16,19 @@ return new class extends Migration
             return;
         }
 
+        // Validate tenant configuration
+        $tenantModel = config('filament-auditing.tenancy.model');
+        
+        throw_unless(
+            $tenantModel,
+            new \InvalidArgumentException(
+                'Tenancy is enabled but no tenant model is configured. '.
+                'Please set "filament-auditing.tenancy.model" in config/filament-auditing.php '.
+                'to your tenant model class (e.g., App\Models\Team::class), '.
+                'or disable tenancy by setting "filament-auditing.tenancy.enabled" to false.'
+            )
+        );
+
         $connection = config('audit.drivers.database.connection', config('database.default'));
         $tableName = config('audit.drivers.database.table', 'audits');
 
@@ -24,7 +37,7 @@ return new class extends Migration
             $tenantColumn = config('filament-auditing.tenancy.column');
 
             // Auto-detect column name if not configured
-            if (! $tenantColumn && $tenantModel) {
+            if (! $tenantColumn) {
                 $relationshipName = config('filament-auditing.tenancy.relationship_name');
                 if (! $relationshipName) {
                     $relationshipName = \Illuminate\Support\Str::snake(class_basename($tenantModel));
@@ -53,6 +66,19 @@ return new class extends Migration
             return;
         }
 
+        // Validate tenant configuration
+        $tenantModel = config('filament-auditing.tenancy.model');
+        
+        throw_unless(
+            $tenantModel,
+            new \InvalidArgumentException(
+                'Tenancy is enabled but no tenant model is configured. '.
+                'Please set "filament-auditing.tenancy.model" in config/filament-auditing.php '.
+                'to your tenant model class (e.g., App\Models\Team::class), '.
+                'or disable tenancy by setting "filament-auditing.tenancy.enabled" to false.'
+            )
+        );
+
         $connection = config('audit.drivers.database.connection', config('database.default'));
         $tableName = config('audit.drivers.database.table', 'audits');
 
@@ -62,13 +88,11 @@ return new class extends Migration
             // Auto-detect column name if not configured
             if (! $tenantColumn) {
                 $tenantModel = config('filament-auditing.tenancy.model');
-                if ($tenantModel) {
-                    $relationshipName = config('filament-auditing.tenancy.relationship_name');
-                    if (! $relationshipName) {
-                        $relationshipName = \Illuminate\Support\Str::snake(class_basename($tenantModel));
-                    }
-                    $tenantColumn = $relationshipName.'_id';
+                $relationshipName = config('filament-auditing.tenancy.relationship_name');
+                if (! $relationshipName) {
+                    $relationshipName = \Illuminate\Support\Str::snake(class_basename($tenantModel));
                 }
+                $tenantColumn = $relationshipName.'_id';
             }
 
             if ($tenantColumn && Schema::connection($connection)->hasColumn($tableName, $tenantColumn)) {
