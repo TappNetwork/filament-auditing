@@ -58,7 +58,7 @@ class Audit extends BaseAudit
      */
     public function tenant(): ?BelongsTo
     {
-        if (! config('filament-auditing.tenancy.enabled')) {
+        if (! config('filament-auditing.tenancy.enabled') || ! config('filament-auditing.tenancy.model')) {
             return null;
         }
 
