@@ -80,7 +80,7 @@ trait CanRestoreAudit
 
         // Get the tenant relationship name dynamically
         $tenantRelationshipName = $audit::getTenantRelationshipName();
-        
+
         // Access the tenant as a property (not method) to get the actual model
         $auditTenant = $audit->{$tenantRelationshipName};
 
