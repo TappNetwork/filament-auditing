@@ -69,5 +69,6 @@ return [
 
     'notification.restored' => 'Audit restored',
     'notification.unchanged' => 'Nothing to change',
+    'notification.unauthorized' => 'Unauthorized access',
 
 ];

@@ -68,5 +68,6 @@ return [
 
     'notification.restored' => 'Audit restauré',
     'notification.unchanged' => 'Rien à modifier',
+    'notification.unauthorized' => 'Accès non autorisé',
 
 ];

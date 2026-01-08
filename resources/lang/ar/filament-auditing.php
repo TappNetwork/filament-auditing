@@ -68,5 +68,6 @@ return [
 
     'notification.restored' => 'تمت الاستعادة',
     'notification.unchanged' => 'لا توجد تعديلات',
+    'notification.unauthorized' => 'وصول غير مصرح به',
 
 ];

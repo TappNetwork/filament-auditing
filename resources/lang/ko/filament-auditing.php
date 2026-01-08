@@ -68,5 +68,6 @@ return [
 
     'notification.restored' => '변경이력 복원',
     'notification.unchanged' => '변경할 사항이 없습니다.',
+    'notification.unauthorized' => '권한이 없습니다',
 
 ];
