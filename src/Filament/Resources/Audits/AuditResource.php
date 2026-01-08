@@ -26,7 +26,8 @@ class AuditResource extends Resource
      */
     public static function isScopedToTenant(): bool
     {
-        return config('filament-auditing.tenancy.enabled', false);
+        return config('filament-auditing.tenancy.enabled', false) 
+            && config('filament-auditing.tenancy.model') !== null;
     }
 
     /**
@@ -35,7 +36,7 @@ class AuditResource extends Resource
      */
     public static function getTenantOwnershipRelationshipName(): string
     {
-        if (! config('filament-auditing.tenancy.enabled')) {
+        if (! config('filament-auditing.tenancy.enabled') || ! config('filament-auditing.tenancy.model')) {
             return 'tenant';
         }
 
@@ -46,9 +47,6 @@ class AuditResource extends Resource
         }
 
         $tenantModel = config('filament-auditing.tenancy.model');
-        if (! $tenantModel) {
-            return 'tenant';
-        }
 
         return \Illuminate\Support\Str::snake(class_basename($tenantModel));
     }
