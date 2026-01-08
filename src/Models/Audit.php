@@ -15,15 +15,11 @@ class Audit extends BaseAudit
         parent::boot();
 
         // Dynamically resolve the tenant relationship based on configuration
-        if (config('filament-auditing.tenancy.enabled')) {
+        if (config('filament-auditing.tenancy.enabled') && config('filament-auditing.tenancy.model')) {
+            $tenantModel = config('filament-auditing.tenancy.model');
             $relationshipName = static::getTenantRelationshipName();
 
-            static::resolveRelationUsing($relationshipName, function ($model) {
-                $tenantModel = config('filament-auditing.tenancy.model');
-                if (! $tenantModel) {
-                    return null;
-                }
-
+            static::resolveRelationUsing($relationshipName, function ($model) use ($tenantModel) {
                 $tenantColumn = config('filament-auditing.tenancy.column');
                 if (! $tenantColumn) {
                     $relationshipName = config('filament-auditing.tenancy.relationship_name');
