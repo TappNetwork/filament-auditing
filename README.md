@@ -16,7 +16,7 @@ restore audits.
 :---------|:-----------------
  2.x      | 2.x
  3.x      | 3.x
- 4.x      | 4.x
+ 4.x/5.x  | 4.x
 
 ## Installation
 
@@ -35,7 +35,7 @@ You can install the plugin via Composer.
 composer require tapp/filament-auditing:"^3.0"
 ```
 
-### For Filament 4
+### For Filament 4 or 5
 
 ```bash
 composer require tapp/filament-auditing:"^4.0"
