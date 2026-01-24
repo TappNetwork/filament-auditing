@@ -12,11 +12,11 @@ restore audits.
 
 ## Version Compatibility
 
- Filament | Filament Auditing
-:---------|:-----------------
- 2.x      | 2.x
- 3.x      | 3.x
- 4.x/5.x  | 4.x
+ Filament | Filament Auditing | Documentation
+:---------|:-----------------|:--------------
+| 4.x/5.x | 4.x              | Current
+| 3.x     | 3.x              | [Check the docs](https://github.com/TappNetwork/filament-auditing/tree/3.x)
+| 2.x     | 2.x              | [Check the docs](https://github.com/TappNetwork/filament-auditing/tree/2.x)
 
 ## Installation
 
@@ -29,20 +29,9 @@ restore audits.
 
 You can install the plugin via Composer.
 
-### For Filament 3
-
-```bash
-composer require tapp/filament-auditing:"^3.0"
-```
-
-### For Filament 4 or 5
-
 ```bash
 composer require tapp/filament-auditing:"^4.0"
 ```
-
-> **Note** 
-> For **Filament 2.x** visit the **[2.x](https://github.com//TappNetwork/filament-auditing/tree/2.x)** branch
 
 You can publish the view files with:
 
