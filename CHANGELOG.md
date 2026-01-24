@@ -2,6 +2,14 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v3.1.3 - 2026-01-24
+
+### What's Changed
+
+* Updates for branch rename by @andreia in https://github.com/TappNetwork/filament-auditing/pull/64
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v3.1.2...v3.1.3
+
 ## v4.0.7 - 2026-01-20
 
 ### What's Changed
