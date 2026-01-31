@@ -11,15 +11,17 @@
                        {{ Str::title($key) }}:
                     </span>
                     <span class="font-semibold">
-                        @unless(is_array($value))
-                            {{ $value }}
-                        @else
+                        @if(is_array($value))
                             <span class="divide-x divide-solid divide-gray-200 dark:divide-gray-700">
                                 @foreach ($value as $nestedValue)
                                     {{ $nestedValue['id'] }}
                                 @endforeach
                             </span>
-                        @endunless
+                        @elseif (is_bool($value))
+                            {{ $value ? 'true' : 'false' }}
+                        @else
+                            {{ $value }}
+                        @endif
                     </span>
                 </li>
             @endforeach
