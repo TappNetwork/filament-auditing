@@ -2,6 +2,14 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.0.9 - 2026-02-02
+
+### What's Changed
+
+* fix(views): properly display boolean values by @andrefedalto in https://github.com/TappNetwork/filament-auditing/pull/49
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.8...v4.0.9
+
 ## v4.0.8 - 2026-01-24
 
 ### What's Changed
