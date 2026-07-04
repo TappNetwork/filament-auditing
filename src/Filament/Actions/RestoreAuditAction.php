@@ -30,14 +30,14 @@ class RestoreAuditAction extends Action
                 Section::make('Restoring From')
                     ->schema([
                         KeyValueEntry::make('new_values')
-                            ->keyLabel('Field')
-                            ->hiddenLabel(),
+                            ->hiddenLabel()
+                            ->keyLabel(trans('filament-auditing::filament-auditing.infolist.field')),
                     ]),
                 Section::make('Restoring To')
                     ->schema([
                         KeyValueEntry::make('old_values')
-                            ->keyLabel('Field')
-                            ->hiddenLabel(),
+                            ->hiddenLabel()
+                            ->keyLabel(trans('filament-auditing::filament-auditing.infolist.field')),
                         // AuditValuesEntry::make('old_values')
                         //    ->hiddenLabel()
                     ]),
