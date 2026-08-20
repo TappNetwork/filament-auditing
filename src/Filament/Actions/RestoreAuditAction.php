@@ -43,7 +43,9 @@ class RestoreAuditAction extends Action
                     ]),
             ])
             ->requiresConfirmation()
-            ->visible(fn (Audit $record): bool => Filament::auth()->user()->can('restoreAudit', $record->auditable) && $record->event === 'updated')
+            ->visible(fn (Audit $record): bool => $record->auditable !== null
+                && $record->event === 'updated'
+                && Filament::auth()->user()->can('restoreAudit', $record->auditable))
             ->after(function ($livewire) {
                 $livewire->dispatch('auditRestored');
             });
