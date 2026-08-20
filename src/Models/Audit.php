@@ -3,6 +3,7 @@
 namespace Tapp\FilamentAuditing\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 use OwenIt\Auditing\Models\Audit as BaseAudit;
 
 class Audit extends BaseAudit
@@ -24,7 +25,7 @@ class Audit extends BaseAudit
                 if (! $tenantColumn) {
                     $relationshipName = config('filament-auditing.tenancy.relationship_name');
                     if (! $relationshipName) {
-                        $relationshipName = \Illuminate\Support\Str::snake(class_basename($tenantModel));
+                        $relationshipName = Str::snake(class_basename($tenantModel));
                     }
                     $tenantColumn = $relationshipName.'_id';
                 }
@@ -49,7 +50,7 @@ class Audit extends BaseAudit
             return 'tenant';
         }
 
-        return \Illuminate\Support\Str::snake(class_basename($tenantModel));
+        return Str::snake(class_basename($tenantModel));
     }
 
     /**
