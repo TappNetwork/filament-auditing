@@ -27,12 +27,14 @@ class FilamentAuditingServiceProvider extends PackageServiceProvider
     {
         parent::packageBooted();
 
-        // Default values for view and restore audits. Add a policy to override these values
-        Gate::define('audit', function ($user, $resource) {
+        // Default values for view and restore audits. Add a policy to override these values.
+        // The resource is optional because the audited model may no longer be
+        // retrievable, e.g. when it has been deleted or soft deleted.
+        Gate::define('audit', function ($user, mixed $resource = null): bool {
             return true;
         });
 
-        Gate::define('restoreAudit', function ($user, $resource) {
+        Gate::define('restoreAudit', function ($user, mixed $resource = null): bool {
             return true;
         });
 

@@ -8,6 +8,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Pages\ListAudits;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Pages\ViewAudit;
 use Tapp\FilamentAuditing\Filament\Resources\Audits\Schemas\AuditInfolist;
@@ -48,7 +49,7 @@ class AuditResource extends Resource
 
         $tenantModel = config('filament-auditing.tenancy.model');
 
-        return \Illuminate\Support\Str::snake(class_basename($tenantModel));
+        return Str::snake(class_basename($tenantModel));
     }
 
     public static function infolist(Schema $schema): Schema
