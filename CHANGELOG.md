@@ -2,6 +2,14 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.1.1 - 2026-08-21
+
+### What's Changed
+
+* Fix audits table crash on scalar nested IDs by @swilla in https://github.com/TappNetwork/filament-auditing/pull/73
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.1.0...v4.1.1
+
 ## v4.1.0 - 2026-08-21
 
 ### What's Changed
