@@ -13,7 +13,7 @@
                     @if(is_array($value))
                         <span class="divide-x divide-solid divide-gray-200 dark:divide-gray-700">
                             @foreach ($value as $nestedValue)
-                                {{$nestedValue['id']}}
+                                {{ \Tapp\FilamentAuditing\Support\AuditValueFormatter::nested($nestedValue) }}
                             @endforeach
                         </span>
                     @elseif (is_bool($value))
