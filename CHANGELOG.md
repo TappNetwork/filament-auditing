@@ -2,6 +2,18 @@
 
 All notable changes to the "Filament Laravel Auditing" will be documented in this file.
 
+## v4.1.0 - 2026-08-21
+
+### What's Changed
+
+* Drop PHP 8.2, add PHP 8.5 and Laravel 13 support by @swilla in https://github.com/TappNetwork/filament-auditing/pull/68
+* Use Node 24-compatible GitHub Actions by @swilla in https://github.com/TappNetwork/filament-auditing/pull/69
+* Add Laravel 13 test support by @swilla in https://github.com/TappNetwork/filament-auditing/pull/70
+* Support Pest 5 by @swilla in https://github.com/TappNetwork/filament-auditing/pull/71
+* Fix ArgumentCountError when the audited model is missing by @andreia in https://github.com/TappNetwork/filament-auditing/pull/72
+
+**Full Changelog**: https://github.com/TappNetwork/filament-auditing/compare/v4.0.9...v4.1.0
+
 ## v4.0.9 - 2026-02-02
 
 ### What's Changed
