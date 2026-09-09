@@ -64,7 +64,7 @@ class AuditsRelationManager extends RelationManager
         }
 
         return $table
-            ->recordTitle(fn (Model $record): string => 'Audit')
+            ->recordTitle(fn(Model $record): string => trans('filament-auditing::filament-auditing.table.heading'))
             ->modifyQueryUsing(function (Builder $query) {
                 $query->with(['user', 'auditable'])
                     ->orderBy(config('filament-auditing.audits_sort.column'), config('filament-auditing.audits_sort.direction'));
